@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"log"
+	"time"
 )
 
 // TelemetryData represents the CPU and memory usage data structure
@@ -65,7 +66,7 @@ func (dc *DataConsumer) ConsumeMessages(topic string) error {
 // processTelemetry processes the consumed stream data (placeholder for real processing logic)
 func (dc *DataConsumer) processTelemetry(telemetry TelemetryData) {
 	log.Printf("Telemetry data received at %v:\nCPU Usage: %.2f%%\nMemory Used: %d/%d bytes\n",
-		telemetry.Timestamp, telemetry.CPUUsage, telemetry.MemoryUsed, telemetry.MemoryTotal)
+		telemetry.Timestamp.UTC().Format(time.RFC3339), telemetry.CPUUsage, telemetry.MemoryUsed, telemetry.MemoryTotal)
 }
 
 // Close closes the consumer

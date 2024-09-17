@@ -56,7 +56,8 @@ func (qe *QueryEngine) Execute(req QueryRequest) (*QueryResponse, error) {
 	// Filter data by the time range
 	var filteredData []TelemetryData
 	for _, entry := range data {
-		if entry.Timestamp.After(req.StartTime) && entry.Timestamp.Before(req.EndTime) {
+		entryTime := entry.Timestamp.UTC()
+		if entryTime.After(req.StartTime) && entryTime.Before(req.EndTime) {
 			filteredData = append(filteredData, entry)
 		}
 	}

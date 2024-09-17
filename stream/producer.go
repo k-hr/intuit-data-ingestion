@@ -50,7 +50,7 @@ func CollectTelemetry() (*TelemetryData, error) {
 	}
 
 	telemetry := &TelemetryData{
-		Timestamp:   time.Now(),
+		Timestamp:   time.Now().UTC(),
 		CPUUsage:    cpuPercentages[0], // average CPU usage across all cores
 		MemoryTotal: vmStat.Total,
 		MemoryUsed:  vmStat.Used,

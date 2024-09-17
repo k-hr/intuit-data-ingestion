@@ -1,0 +1,13 @@
+# Go modules
+go.sum
+
+# Dependency directories (vendor directory for vendored modules)
+vendor/
+
+# Kafka-specific files
+kafka-logs/
+zookeeper/
+
+# Docker files (if using Docker)
+docker-compose.yml
+.dockerignore
